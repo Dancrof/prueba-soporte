@@ -5,7 +5,7 @@
     
         <meta charset="UTF-8" ng-app="myApp">
     
-        <title>Faveo | HELP DESK</title>
+        <title>UTELVT | HELP DESK</title>
     
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     
@@ -370,7 +370,7 @@
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar elevation-4 sidebar-dark-black">
 
-                <a href="http://www.faveohelpdesk.com" class="brand-link " style="text-align: center;">
+                <a href="https://localhost/faveo-helpdesk/public/" class="brand-link " style="text-align: center;">
                     <img src="{{ asset('lb-faveo/media/images/logo.png')}}" class="brand-image" alt="Company Log0">
                 </a>
 
