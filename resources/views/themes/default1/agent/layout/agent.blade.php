@@ -5,7 +5,7 @@
     
         <meta charset="UTF-8" ng-app="myApp">
     
-        <title>UTELVT | HELP DESK</title>
+        <title>{{Config::get('app.name')}}</title>
     
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     
@@ -370,8 +370,15 @@
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar elevation-4 sidebar-dark-black">
 
-                <a href="{{env('APP_URL')}}" class="brand-link " style="text-align: center;">
-                    <img src="{{ asset('lb-faveo/media/images/logo.png')}}" class="brand-image" alt="Company Log0">
+                <a href="{{ Config::get('app.url') }}" class="brand-link " style="text-align: center;">
+                    <?php
+                    $company = App\Model\helpdesk\Settings\Company::where('id', '=', '1')->first();
+                    ?>
+                    @if(isset($company->logo) && $company->use_logo == 1)
+                        <img src="{{ asset('uploads/company/'.$company->logo) }}" class="brand-image" alt="Company Log0">
+                    @else
+                        <img src="{{ asset('lb-faveo/media/images/logo.png')}}" class="brand-image" alt="Company Log0">
+                    @endif
                 </a>
 
                 <div class="sidebar">
@@ -653,9 +660,9 @@
                 $company = App\Model\helpdesk\Settings\Company::where('id', '=', '1')->first();
                 ?>
                 @if(isset($company))
-                    <span style="font-weight: 500">{!! Lang::get('lang.copyright') !!} &copy; {!! date('Y') !!}  <a href="{!! $company->website !!}" target="_blank" class="text-green">{!! $company->company_name !!}</a>.</span> {!! Lang::get('lang.all_rights_reserved') !!}. {!! Lang::get('lang.powered_by') !!} <a href="https://laravel.com/" target="_blank" class="text-red">Laravel</a>
+                    <span style="font-weight: 500">{!! Lang::get('lang.copyright') !!} &copy; {!! date('Y') !!}  <a href="{!! $company->website !!}" target="_blank" class="text-green">{!! $company->company_name !!}</a>.</span> {!! Lang::get('lang.all_rights_reserved') !!}. {!! Lang::get('lang.powered_by') !!} <a href="https://laravel.com/" target="_blank" class="text-red">{{ env('POWERED_BY') }}</a>
                 @else
-                    <span style="font-weight: 500">{!! Lang::get('lang.copyright') !!} &copy; {!! date('Y') !!}  <a href="https://laravel.com/" target="_blank" class="text-green">Laravel</a></span> {!! Lang::get('lang.all_rights_reserved') !!}. {!! Lang::get('lang.powered_by') !!} <a href="https://laravel.com/" target="_blank" class="text-red">Laravel</a>
+                    <span style="font-weight: 500">{!! Lang::get('lang.copyright') !!} &copy; {!! date('Y') !!}  <a href="https://laravel.com/" target="_blank" class="text-green">Laravel</a></span> {!! Lang::get('lang.all_rights_reserved') !!}. {!! Lang::get('lang.powered_by') !!} <a href="https://laravel.com/" target="_blank" class="text-red">{{ env('POWERED_BY') }}</a>
                 @endif
                 
             </footer>

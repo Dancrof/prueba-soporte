@@ -89,7 +89,15 @@
                 <div align="center">
                     
                     <h4 style="background-color: #0084b4;">
-                        <a href="http://www.faveohelpdesk.com" class="logo"><img src="{{ asset('lb-faveo/media/images/logo.png')}}" width="100px;" ></a>
+                        <?php
+                        
+                        $company = App\Model\helpdesk\Settings\Company::where('id', '=', '1')->first();
+                        ?>
+                        @if(isset($company->logo) && $company->use_logo == 1)
+                            <a href="{{ $company->website }}" class="logo" target="_blank"><img src="{{ asset('uploads/company/'.$company->logo) }}" width="100px;" ></a>
+                        @else
+                            <a href="{{ Config::get('app.url') }}" class="logo"><img src="{{ asset('lb-faveo/media/images/logo.png')}}" width="100px;" ></a>
+                        @endif
                     </h4>    
                 </div>
                

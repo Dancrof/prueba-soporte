@@ -336,10 +336,16 @@
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar elevation-4 sidebar-dark-orange">
 
-                <a href="http://www.faveohelpdesk.com" class="brand-link navbar-dark" style="text-align: center;">
-                    <img src="{{ asset('lb-faveo/media/images/logo.png')}}" class="brand-image" alt="Company Log0">
+                <a href="{{ Config::get('app.url') }}" class="brand-link navbar-dark" style="text-align: center;">
+                    <?php   
+                    $company = App\Model\helpdesk\Settings\Company::where('id', '=', '1')->first();
+                    ?>
+                    @if(isset($company->logo) && $company->use_logo == 1)
+                        <img src="{{ asset('uploads/company/'.$company->logo) }}" class="brand-image" alt="Company Log0">
+                    @else
+                        <img src="{{ asset('lb-faveo/media/images/logo.png')}}" class="brand-image" alt="Company Log0">
+                    @endif
                 </a>
-
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
 
