@@ -136,6 +136,7 @@ Para ejecutar Faveo Helpdesk usando Docker, sigue estos pasos:
    - Docker instalado
    - Docker Compose instalado
    - Git instalado
+   - OpenSSL instalado (para generar certificados SSL)
 
 2. Clonar el repositorio:
 ```bash
@@ -157,12 +158,21 @@ DB_USERNAME=faveo
 DB_PASSWORD=tu_contraseña
 ```
 
-4. Iniciar los contenedores:
+4. Generar certificados SSL:
+```bash
+# Dar permisos de ejecución al script
+chmod +x docker/nginx/ssl/generate-ssl.sh
+
+# Ejecutar el script para generar certificados
+./docker/nginx/ssl/generate-ssl.sh
+```
+
+5. Iniciar los contenedores:
 ```bash
 docker-compose up -d
 ```
 
-5. Instalar dependencias y configurar la aplicación:
+6. Instalar dependencias y configurar la aplicación:
 ```bash
 # Instalar dependencias de Composer
 docker-compose exec app composer install
@@ -178,14 +188,22 @@ docker-compose exec app npm install
 docker-compose exec app npm run dev
 ```
 
-6. Acceder a la aplicación:
-La aplicación estará disponible en `http://localhost:8000`
+7. Acceder a la aplicación:
+La aplicación estará disponible en:
+- HTTPS: `https://localhost`
+- HTTP: `http://localhost` (redirige automáticamente a HTTPS)
+
+Nota: Como estamos usando certificados autofirmados, el navegador mostrará una advertencia de seguridad. En un entorno de producción, deberías usar certificados válidos de una autoridad certificadora.
 
 Configuración incluida:
 - PHP 8.0 con FPM
-- Nginx como servidor web
+- Nginx como servidor web con soporte HTTPS
 - MySQL 8.0 como base de datos
 - Redis para caché
+- SSL/TLS configurado con:
+  - TLSv1.2 y TLSv1.3
+  - Cifrados seguros
+  - Redirección automática de HTTP a HTTPS
 - Extensiones PHP necesarias:
   - pdo_mysql
   - mbstring
@@ -215,4 +233,7 @@ docker-compose restart
 
 # Ejecutar comandos artisan
 docker-compose exec app php artisan [comando]
+
+# Regenerar certificados SSL
+./docker/nginx/ssl/generate-ssl.sh
 ```
