@@ -694,6 +694,12 @@ class UserController extends Controller
             }
             $users->mobile = ($request->input('mobile') == '') ? null : $request->input('mobile');
             $users->fill($request->except('mobile', 'active', 'role', 'is_delete', 'ban'));
+           
+            // Asignar manualmente status y prohibición
+            $users->active = $request->input('active');
+            $users->ban = $request->input('ban');
+            
+            //Guardar los cambios
             $users->save();
             if ($request->input('org_id') != '') {
                 $orgid = $request->input('org_id');
