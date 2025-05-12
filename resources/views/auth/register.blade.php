@@ -104,19 +104,18 @@
                 <div>
                     <div class="text-center">
                         <h3 class="box-title" >{{Lang::get('lang.registration')}}</h3>
-                    </div>   </div>
+                    </div>   
+                </div>
 
                 <div>
-
-                    <placeholder ="Let’s set up your account in just a couple of steps.">
+                    <placeholder ="Let's set up your account in just a couple of steps.">
                 </div>      
 
                 <!-- form open -->
-                {!!  Form::open(['url'=>'auth/register', 'method'=>'post']) !!}
+                {!!  Form::open(['url'=>'auth/register', 'method'=>'post', 'id' => 'registerForm']) !!}
 
                 <!-- fullname -->
                 <div class="form-group has-feedback {{ $errors->has('full_name') ? 'has-error' : '' }}" style="display: -webkit-box;">
-            
                     {!! Form::text('full_name',null,['placeholder'=>Lang::get('lang.full_name'),'class' => 'form-control']) !!}
                     <span class="fas fa-user   form-control-feedback" style="top: 9px;left: -25px;color: #6c757d;"></span>
                 </div>
@@ -153,30 +152,17 @@
                 @else
                     {!! Form::hidden('mobile', null) !!}
                     {!! Form::hidden('code', null) !!}
-
                 @endif
-                <!-- Password -->
-                <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}" style="display: -webkit-box;">
-                           
-                    {!! Form::password('password',['placeholder'=>Lang::get('lang.password'),'class' => 'form-control']) !!}
-                    <span class="fa fa-lock  form-control-feedback" style="top: 9px;left: -25px;color: #6c757d;"></span>
 
-                </div>
-                <!-- Confirm password -->
-                <div class="form-group has-feedback {{ $errors->has('password_confirmation') ? 'has-error' : '' }}" style="display: -webkit-box;">
-                           
-                    {!! Form::password('password_confirmation',['placeholder'=>Lang::get('lang.retype_password'),'class' => 'form-control']) !!}
-                    <span class="fas fa-sign-in-alt form-control-feedback" style="top: 9px;left: -25px;color: #6c757d;"></span>
-
-                </div>
+                <!-- Campos ocultos para la contraseña generada -->
+                {!! Form::hidden('password', null, ['id' => 'generated_password']) !!}
+                {!! Form::hidden('password_confirmation', null, ['id' => 'generated_password_confirmation']) !!}
                 
-                <div >
-                    
+                <div>
                     <button type="submit" class="btn btn-primary btn-block btn-flat" style="width: 100%; hov: #00c0ef; color: #fff">{!! Lang::get('lang.register') !!}</button>
                 </div>
 
                 <div>
-                  
                     <div class="checkbox icheck" align="center">
                         <label class="mb-0">
                            {{trans('lang.already_got_an_account?')}} <a href="{{url('auth/login')}}" class="text-center">{!! Lang::get('lang.login') !!}</a>
@@ -187,11 +173,31 @@
                             @include('themes.default1.client.layout.social-login')
                         </div>
                     </div>
-                </div><!-- /.col --> 
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Script para generar contraseña aleatoria -->
+<script>
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    // Generar contraseña aleatoria
+    const length = 12;
+    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+    let password = "";
+    
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        password += charset[randomIndex];
+    }
+    
+    // Asignar la contraseña generada a los campos ocultos
+    document.getElementById('generated_password').value = password;
+    document.getElementById('generated_password_confirmation').value = password;
+});
+</script>
+
 {!! Form::close()!!}  
 
 @stop

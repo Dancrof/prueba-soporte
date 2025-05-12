@@ -84,8 +84,8 @@ return [
         'string'  => 'El atributo: debe ser :size characters.',
         'array'   => 'El atributo: must contain :size items.',
     ],
-    'unique'   => 'El atributo: has already been taken.',
-    'url'      => 'El atributo: format es inválido.',
+    'unique'   => 'El atributo: ya ha sido tomado.',
+    'url'      => 'El atributo: formato es inválido.',
     'timezone' => 'El atributo: debe ser una zona válida.',
     /*
       |--------------------------------------------------------------------------

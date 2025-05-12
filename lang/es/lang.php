@@ -99,7 +99,7 @@ return [
     'i_already_have_a_membership'                                                                 => 'Ya eres un miembro',
     'see-profile1'                                                                                => 'Haga clic aquí para ver ',
     'see-profile2'                                                                                => 'Perfil de s',
-    'activate_your_account_click_on_Link_that_send_to_your_mail'                                  => 'Activa tu cuenta! Haga clic en el enlace que hemos enviado a su correo',
+    'activate_your_account_click_on_Link_that_send_to_your_mail'                                  => 'Espere mientrar un administrador o agente verifique su cuenta',
     'activate_your_account_click_on_Link_that_send_to_your_mail_and_moble'                        => 'Activa tu cuenta! Haz clic en el enlace que hemos enviado a tu correo o accede a tu cuenta e ingresa el código de OTP que hemos enviado en tu número de móvil',
     'activate_your_account_click_on_Link_that_send_to_your_mail_sms_plugin_inactive_or_not_setup' => 'Cuenta creada, póngase en contacto con el administrador del sistema, ya que no pudimos enviar el código de OTP a su móvil y lo enviamremos a su dirección de correo electrónico..',
     'this_field_do_not_match_our_records'                                                         => 'Este campo no coincide con nuestros registros.',
