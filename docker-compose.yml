@@ -1,0 +1,61 @@
+version: '3'
+services:
+  app:
+    build:
+      args:
+        user: laravel
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: faveo-helpdesk
+    container_name: faveo-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - faveo-network
+
+  db:
+    image: mysql:8.0
+    container_name: faveo-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker/mysql:/docker-entrypoint-initdb.d
+      - faveo-db:/var/lib/mysql
+    networks:
+      - faveo-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: faveo-nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx:/etc/nginx/conf.d/
+    networks:
+      - faveo-network
+
+  redis:
+    image: redis:alpine
+    container_name: faveo-redis
+    restart: unless-stopped
+    networks:
+      - faveo-network
+
+networks:
+  faveo-network:
+    driver: bridge
+
+volumes:
+  faveo-db:
+    driver: local 

@@ -14,7 +14,7 @@
 
 Faveo Helpdesk provides Businesses with an automated Helpdesk system to manage customer support. 
 
-The word Faveo comes from Latin which means to be favourable. Which truly highlights vision and the scope as well as the functionality of the product that Faveo is. In today’s competitive startup scenario customer retention is one of the major challenges. Handling client query diligently is all the difference between retaining or losing a long lasting relationship. The company is driven with passion of providing tools for managing consumer queries for strategic insights and helping companies take those decisive decisions.
+The word Faveo comes from Latin which means to be favourable. Which truly highlights vision and the scope as well as the functionality of the product that Faveo is. In today's competitive startup scenario customer retention is one of the major challenges. Handling client query diligently is all the difference between retaining or losing a long lasting relationship. The company is driven with passion of providing tools for managing consumer queries for strategic insights and helping companies take those decisive decisions.
 
 Faveo has been integrated with multiple platforms and new features being added each month.
 
@@ -127,3 +127,92 @@ Visit the <a href="https://github.com/ladybirdweb/faveo-helpdesk/issues">issue</
 Follow Us
 --------------------------
 <a href="https://www.facebook.com/faveohelpdesk" ><img src="http://www.faveohelpdesk.com/wp-content/uploads/2016/12/fb.png" /></a> <a href="https://twitter.com/faveohelpdesk" ><img src="http://www.faveohelpdesk.com/wp-content/uploads/2016/12/twitter.png" /></a> <a href="https://www.linkedin.com/showcase/faveohelpdesk/" ><img src="http://www.faveohelpdesk.com/wp-content/uploads/2016/12/linkedin.png" /></a> <a href="https://www.youtube.com/channel/UC-eqh-h241b1janp6sU7Iiw" ><img src="http://www.faveohelpdesk.com/wp-content/uploads/2016/12/youtube.png" /></a> 
+
+Ejecución con Docker
+--------------------------
+Para ejecutar Faveo Helpdesk usando Docker, sigue estos pasos:
+
+1. Requisitos previos:
+   - Docker instalado
+   - Docker Compose instalado
+   - Git instalado
+
+2. Clonar el repositorio:
+```bash
+git clone https://github.com/ladybirdweb/faveo-helpdesk.git
+cd faveo-helpdesk
+```
+
+3. Configurar el archivo .env:
+```bash
+cp .env.example .env
+```
+Edita el archivo .env con las siguientes variables de base de datos:
+```
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=faveo
+DB_USERNAME=faveo
+DB_PASSWORD=tu_contraseña
+```
+
+4. Iniciar los contenedores:
+```bash
+docker-compose up -d
+```
+
+5. Instalar dependencias y configurar la aplicación:
+```bash
+# Instalar dependencias de Composer
+docker-compose exec app composer install
+
+# Generar clave de aplicación
+docker-compose exec app php artisan key:generate
+
+# Ejecutar migraciones
+docker-compose exec app php artisan migrate
+
+# Instalar dependencias de NPM (si es necesario)
+docker-compose exec app npm install
+docker-compose exec app npm run dev
+```
+
+6. Acceder a la aplicación:
+La aplicación estará disponible en `http://localhost:8000`
+
+Configuración incluida:
+- PHP 8.0 con FPM
+- Nginx como servidor web
+- MySQL 8.0 como base de datos
+- Redis para caché
+- Extensiones PHP necesarias:
+  - pdo_mysql
+  - mbstring
+  - exif
+  - pcntl
+  - bcmath
+  - gd
+  - zip
+  - imagick
+- Configuración PHP optimizada:
+  - upload_max_filesize=40M
+  - post_max_size=40M
+  - memory_limit=512M
+  - max_execution_time=600
+  - max_input_vars=3000
+
+Comandos útiles:
+```bash
+# Ver logs de los contenedores
+docker-compose logs -f
+
+# Detener los contenedores
+docker-compose down
+
+# Reiniciar los contenedores
+docker-compose restart
+
+# Ejecutar comandos artisan
+docker-compose exec app php artisan [comando]
+```
