@@ -185,7 +185,7 @@
                     </li>
                     @endif
 
-                    @include('themes.default1.update.notification')
+                    {{-- @include('themes.default1.update.notification') --}}
 
                     <li class="nav-item dropdown notifications-menu" id="myDropdown">
 

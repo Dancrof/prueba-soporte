@@ -150,7 +150,7 @@
                         <a href="{{url('admin')}}" class="nav-link">{!! Lang::get('lang.admin_panel') !!}</a>
                     </li>
 
-                    @include('themes.default1.update.notification')
+                    {{-- @include('themes.default1.update.notification') --}}
 
                     <li class="nav-item dropdown notifications-menu" id="myDropdown">
 
