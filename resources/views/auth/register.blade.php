@@ -88,7 +88,7 @@
      
                 <div align="center">
                     
-                    <h4 style="background-color: #0084b4;">
+                    <h4 style="background-color:rgb(93, 201, 120);">
                         <?php
                         
                         $company = App\Model\helpdesk\Settings\Company::where('id', '=', '1')->first();
@@ -154,10 +154,25 @@
                     {!! Form::hidden('code', null) !!}
                 @endif
 
-                <!-- Campos ocultos para la contraseña generada -->
+                {{-- <!-- Campos ocultos para la contraseña generada -->
                 {!! Form::hidden('password', null, ['id' => 'generated_password']) !!}
-                {!! Form::hidden('password_confirmation', null, ['id' => 'generated_password_confirmation']) !!}
+                {!! Form::hidden('password_confirmation', null, ['id' => 'generated_password_confirmation']) !!} --}}
                 
+                <!-- Password -->
+                <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}" style="display: -webkit-box;">
+                           
+                    {!! Form::password('password',['placeholder'=>Lang::get('lang.password'),'class' => 'form-control']) !!}
+                    <span class="fa fa-lock  form-control-feedback" style="top: 9px;left: -25px;color: #6c757d;"></span>
+
+                </div>
+                <!-- Confirm password -->
+                <div class="form-group has-feedback {{ $errors->has('password_confirmation') ? 'has-error' : '' }}" style="display: -webkit-box;">
+                           
+                    {!! Form::password('password_confirmation',['placeholder'=>Lang::get('lang.retype_password'),'class' => 'form-control']) !!}
+                    <span class="fas fa-sign-in-alt form-control-feedback" style="top: 9px;left: -25px;color: #6c757d;"></span>
+
+                </div>
+
                 <div>
                     <button type="submit" class="btn btn-primary btn-block btn-flat" style="width: 100%; hov: #00c0ef; color: #fff">{!! Lang::get('lang.register') !!}</button>
                 </div>
@@ -179,7 +194,7 @@
     </div>
 </div>
 
-<!-- Script para generar contraseña aleatoria -->
+{{-- <!-- Script para generar contraseña aleatoria -->
 <script>
 document.getElementById('registerForm').addEventListener('submit', function(e) {
     // Generar contraseña aleatoria
@@ -196,7 +211,7 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
     document.getElementById('generated_password').value = password;
     document.getElementById('generated_password_confirmation').value = password;
 });
-</script>
+</script> --}}
 
 {!! Form::close()!!}  
 

@@ -94,7 +94,7 @@
 
                     <div align="center">
 
-                        <h4 style="background-color: #0084b4;">
+                        <h4 style="background-color:rgb(93, 201, 120);">
                             <?php
                             $company = App\Model\helpdesk\Settings\Company::where('id', '=', '1')->first();
                             ?>
