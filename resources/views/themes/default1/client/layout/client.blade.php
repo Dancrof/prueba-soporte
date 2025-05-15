@@ -13,7 +13,7 @@
         <title> @yield('title') {!! strip_tags($title_name) !!} </title>
         <!-- faveo favicon -->
         <?php $company = App\Model\helpdesk\Settings\Company::where('id', '=', '1')->first(); ?>
-        @if(isset($company->favicon) && $company->favicon)
+        @if(isset($company->favicon) && $company->use_logo == 1)
             <link href="{{ asset('lb-faveo/media/company/'.$company->favicon) }}" rel="shortcut icon">
         @else
             <link href="{{asset('lb-faveo/media/images/favicon.ico')}}" rel="shortcut icon">
