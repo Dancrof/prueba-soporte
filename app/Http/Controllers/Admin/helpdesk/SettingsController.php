@@ -97,7 +97,7 @@ class SettingsController extends Controller
         $companys = $company->whereId('1')->first();
         if (Input::file('logo')) {
             $name = Input::file('logo')->getClientOriginalName();
-            $destinationPath = 'uploads/company/';
+            $destinationPath = 'lb-faveo/media/company/';
             $fileName = rand(0000, 9999).'.'.$name;
             Input::file('logo')->move($destinationPath, $fileName);
             $companys->logo = $fileName;

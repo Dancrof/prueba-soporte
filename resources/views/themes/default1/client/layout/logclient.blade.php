@@ -107,7 +107,11 @@
                                 <a href="{{url('/')}}" rel="home">
                                     @endif
                                     @if($company->use_logo == 1)
-                                        <img src="{{asset('uploads/company')}}{{'/'}}{{$company->logo}}" alt="User Image" width="200px" height="200px"/>
+                                        @if(isset($company->logo))
+                                            <img src="{{asset('lb-faveo/media/company')}}{{'/'}}{{$company->logo}}" alt="User Image" width="200px" height="200px"/>
+                                        @else
+                                            <img src="{{asset('lb-faveo/media/images/logo.png')}}" alt="User Image" width="200px" height="200px"/>
+                                        @endif
                                     @else
                                         @if($system->name)
                                             {!! $system->name !!}

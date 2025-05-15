@@ -375,7 +375,7 @@
                     $company = App\Model\helpdesk\Settings\Company::where('id', '=', '1')->first();
                     ?>
                     @if(isset($company->logo) && $company->use_logo == 1)
-                        <img src="{{ asset('uploads/company/'.$company->logo) }}" class="brand-image" alt="Company Log0">
+                        <img src="{{ asset('lb-faveo/media/company/'.$company->logo) }}" class="brand-image" alt="Company Log0">
                     @else
                         <img src="{{ asset('lb-faveo/media/images/logo.png')}}" class="brand-image" alt="Company Log0">
                     @endif

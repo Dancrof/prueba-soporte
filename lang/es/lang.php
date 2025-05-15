@@ -325,10 +325,10 @@ return [
     'the_rtl_support_is_only_applicable_to_the_outgoing_mails'   => 'El soporte de RTL sólo es aplicable a los correos salientes',
     'user_set_ticket_status'                                     => 'Permitir a los usuarios establecer el estado del ticket',
     'send_otp_for_account_verfication'                           => 'Enviar OTP a los usuarios',
-    'otp_usage_info'                                             => 'If you disallow unverified users to create ticket, we\'ll send an email with verification link and an sms with OTP code to users. If email is set as non mandatory users will recieve username and password on their mobile. [NOTE: SMS will be sent using Faveo SMS plugin].',
-    'send_otp_title_message'                                     => 'Send OTP for user account verification, reset password and mobile number verification',
-    'allow_unverified_users_to_create_ticket'                    => 'Allow unverified users to create tickets',
-    'make-email-mandatroy'                                       => 'Make email mandatory for ticket/user creation',
+    'otp_usage_info'                                             => 'Si no permite a los usuarios no verificados crear tickets, enviaremos un correo electrónico con vínculo de verificación y un sms con código OTP a los usuarios. Si el correo electrónico se establece como no obligatorio, los usuarios recibirán su nombre de usuario y contraseña en su móvil. [NOTA: SMS se enviará utilizando Faveo SMS plugin].',
+    'send_otp_title_message'                                     => 'Enviar OTP para la verificación de la cuenta de usuario, restablecimiento de contraseña y verificación de número de teléfono móvil',
+    'allow_unverified_users_to_create_ticket'                    => 'Permite que usuarios no verificados creen tickets',
+    'make-email-mandatroy'                                       => 'Hacer que el correo electrónico sea obligatorio para la creación de tickets/usuarios',
     'email_man_info'                                             => 'Si no permite a los usuarios no verificados crear tickets, enviaremos un correo electrónico con vínculo de verificación y un sms con código OTP a los usuarios. Si el correo electrónico se establece como no obligatorio, los usuarios recibirán su nombre de usuario y contraseña en su móvil. [NOTA: SMS se enviará utilizando Faveo SMS plugin].',
     /*
       |--------------------------------------
