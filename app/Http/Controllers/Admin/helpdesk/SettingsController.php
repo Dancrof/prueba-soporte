@@ -132,15 +132,19 @@ class SettingsController extends Controller
      */
     public function deleteLogo()
     {
-        $path = $_GET['data1']; //get file path of logo image
+        $path = $_GET['data1']; //get file path of logo or favicon image
+        $type = isset($_GET['type']) ? $_GET['type'] : 'logo';
         if (!unlink($path)) {
             return 'false';
         } else {
             $companys = Company::where('id', '=', 1)->first();
-            $companys->logo = null;
-            $companys->use_logo = '0';
+            if ($type === 'favicon') {
+                $companys->favicon = null;
+            } else {
+                $companys->logo = null;
+                $companys->use_logo = '0';
+            }
             $companys->save();
-
             return 'true';
         }
         // return $res;

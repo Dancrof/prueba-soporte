@@ -138,8 +138,8 @@ class="nav-link active"
             </div>
             <div class="col-sm-10">
                 @if($companys->favicon != null)
-                <div class="col-md-3">
-                    <img src="{{asset('lb-faveo/media/company')}}/{{ $companys->favicon }}" alt="Favicon" width="32px" height="32px" style="border:1px solid #DCD1D1" />
+                <div class="col-md-3 favicon-image" data-content="Haga clic aquí para eliminar">
+                    <img src="{{asset('lb-faveo/media/company')}}/{{ $companys->favicon }}" alt="Favicon" width="32px" height="32px" style="border:1px solid #DCD1D1; cursor:pointer;" id="company-favicon" />
                 </div>
                 @endif
             </div>
@@ -168,31 +168,51 @@ class="nav-link active"
 </div>
 <script type="text/javascript">
     $(document).ready(function() {
+        // Logo delete
         $(".image").on("click", function() {
             $('#myModal').modal('show');
             $("#myModalLabel").html("{!! Lang::get('lang.delete-logo') !!}");
             $(".yes").html("{!! Lang::get('lang.yes') !!}");
             $(".no").html("{{Lang::get('lang.cancel')}}");
             $("#custom-alert-body").html("{{Lang::get('lang.confirm')}}");
+            $("#myModal").data('delete-type', 'logo');
+        });
+        // Favicon delete
+        $(".favicon-image").on("click", function() {
+            $('#myModal').modal('show');
+            $("#myModalLabel").html("Eliminar favicon");
+            $(".yes").html("Sí");
+            $(".no").html("Cancelar");
+            $("#custom-alert-body").html("¿Estás seguro de que deseas eliminar el favicon?");
+            $("#myModal").data('delete-type', 'favicon');
         });
         $('.no,.closemodal').on("click", function() {
             $('#myModal').modal('hide');
         });
         $('.yes').on('click', function() {
-            var src = $('#company-logo').attr('src').split('/');
-            var file = src[src.length - 1];
-
-            var path = "lb-faveo/media/company/" + file;
-            // alert(path); 
+            var deleteType = $('#myModal').data('delete-type');
+            var path = '';
+            if(deleteType === 'logo') {
+                var src = $('#company-logo').attr('src').split('/');
+                var file = src[src.length - 1];
+                path = "lb-faveo/media/company/" + file;
+            } else if(deleteType === 'favicon') {
+                var src = $('#company-favicon').attr('src').split('/');
+                var file = src[src.length - 1];
+                path = "lb-faveo/media/company/" + file;
+            }
             $.ajax({
                 type: "GET",
                 url: "{{route('delete.logo')}}",
                 dataType: "html",
-                data: {data1: path},
+                data: {data1: path, type: deleteType},
                 success: function(data) {
                     if (data == "true") {
-                        var msg = "Logo deleted succesfully."
-                        $("#logo-display").css("display", "none");
+                        if(deleteType === 'logo') {
+                            $("#logo-display").css("display", "none");
+                        } else if(deleteType === 'favicon') {
+                            $(".favicon-image").css("display", "none");
+                        }
                         $('#myModal').modal('hide');
                     } else {
                         $('#myModal').modal('hide');
