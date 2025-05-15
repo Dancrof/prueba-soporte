@@ -5,7 +5,12 @@
         <title>Faveo | HELP DESK</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- faveo favicon -->
-        <link href="{{asset("lb-faveo/media/images/favicon.ico")}}" rel="shortcut icon">
+        <?php $company = App\Model\helpdesk\Settings\Company::where('id', '=', '1')->first(); ?>
+        @if(isset($company->favicon) && $company->favicon)
+            <link href="{{ asset('lb-faveo/media/company/'.$company->favicon) }}" rel="shortcut icon">
+        @else
+            <link href="{{asset('lb-faveo/media/images/favicon.ico')}}" rel="shortcut icon">
+        @endif
                <!-- Bootstrap 4.3.1 -->
 {{--        <link href="{{asset("lb-faveo/css/bootstrap4.min.css")}}" rel="stylesheet" type="text/css" />--}}
 

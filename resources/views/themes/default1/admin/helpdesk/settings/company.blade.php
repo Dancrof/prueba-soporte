@@ -129,6 +129,20 @@ class="nav-link active"
                     </div>
                 </div>
             </div>
+            <!-- Favicon -->
+            <div class="col-md-2">
+                {!! Form::label('favicon', 'Favicon') !!}
+                <div class="btn bg-olive btn-file" style="color:blue"> Subir favicon
+                    {!! Form::file('favicon') !!}
+                </div>
+            </div>
+            <div class="col-sm-10">
+                @if($companys->favicon != null)
+                <div class="col-md-3">
+                    <img src="{{asset('lb-faveo/media/company')}}/{{ $companys->favicon }}" alt="Favicon" width="32px" height="32px" style="border:1px solid #DCD1D1" />
+                </div>
+                @endif
+            </div>
         </div>
     </div>
     <div class="card-footer">

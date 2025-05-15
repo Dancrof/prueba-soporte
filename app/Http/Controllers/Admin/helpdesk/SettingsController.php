@@ -102,6 +102,13 @@ class SettingsController extends Controller
             Input::file('logo')->move($destinationPath, $fileName);
             $companys->logo = $fileName;
         }
+        if (Input::file('favicon')) {
+            $name = Input::file('favicon')->getClientOriginalName();
+            $destinationPath = 'lb-faveo/media/company/';
+            $fileName = 'favicon_'.rand(1000, 9999).'.'.pathinfo($name, PATHINFO_EXTENSION);
+            Input::file('favicon')->move($destinationPath, $fileName);
+            $companys->favicon = $fileName;
+        }
         if ($request->input('use_logo') == null) {
             $companys->use_logo = '0';
         }

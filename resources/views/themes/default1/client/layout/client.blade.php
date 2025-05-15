@@ -12,7 +12,12 @@
         ?>
         <title> @yield('title') {!! strip_tags($title_name) !!} </title>
         <!-- faveo favicon -->
-        <link href="{{asset("lb-faveo/media/images/favicon.ico")}}"  rel="shortcut icon" >
+        <?php $company = App\Model\helpdesk\Settings\Company::where('id', '=', '1')->first(); ?>
+        @if(isset($company->favicon) && $company->favicon)
+            <link href="{{ asset('lb-faveo/media/company/'.$company->favicon) }}" rel="shortcut icon">
+        @else
+            <link href="{{asset('lb-faveo/media/images/favicon.ico')}}" rel="shortcut icon">
+        @endif
 
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
