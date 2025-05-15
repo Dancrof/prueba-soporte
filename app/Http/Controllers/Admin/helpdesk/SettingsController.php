@@ -126,7 +126,7 @@ class SettingsController extends Controller
     }
 
     /**
-     * function to delete system logo.
+     * function to delete system logo and favicon.
      *
      * @return type string
      */

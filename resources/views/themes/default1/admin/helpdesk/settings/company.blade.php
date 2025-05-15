@@ -104,44 +104,41 @@ class="nav-link active"
             {!! Form::textarea('address',$companys->address,['class' => 'form-control','size' => '30x5']) !!}
         </div>
 
-        <div class="row">
-            <div class="col-md-2">
+        <div class="row align-items-start mb-4" style="gap: 0;">
+            <div class="col-md-6 d-flex flex-column align-items-center">
                 <!-- logo -->
-                {!! Form::label('logo',Lang::get('lang.logo')) !!}
-                <div class="btn bg-olive btn-file" style="color:blue"> {{Lang::get('lang.upload_file')}}
-                    {!! Form::file('logo') !!}
+                <label class="font-weight-bold mb-2" for="logo">{!! Lang::get('lang.logo') !!}</label>
+                <div class="custom-file mb-2 w-100" style="max-width:320px;">
+                    {!! Form::file('logo', ['class' => 'custom-file-input', 'id' => 'logo']) !!}
+                    <label class="custom-file-label" for="logo">{{ Lang::get('lang.upload_file') }}</label>
                 </div>
-            </div>
-            <div class="col-sm-10">
-                <div id="logo-display" style="display: block;">
-                    <div class="row">
-                        @if($companys->logo != null)
-                        <div class="col-sm-2">
-                            {!! Form::checkbox('use_logo') !!} <label> {!! Lang::get('lang.use_logo') !!}</label>
-                        </div>
-                        @endif
-                        <?php $company = App\Model\helpdesk\Settings\Company::where('id', '=', '1')->first(); ?>
-                        @if($companys->logo != null)
-                        <div class="col-md-3 image" data-content="{{Lang::get('lang.click-delete')}}">
-                            <img src="{{asset('lb-faveo/media/company')}}{{'/'}}{{$company->logo}}" alt="User Image" id="company-logo" width="100px" style="border:1px solid #DCD1D1" />
-                        </div>
-                        @endif
-                    </div>
-                </div>
-            </div>
-            <!-- Favicon -->
-            <div class="col-md-2">
-                {!! Form::label('favicon', 'Favicon') !!}
-                <div class="btn bg-olive btn-file" style="color:blue"> Subir favicon
-                    {!! Form::file('favicon') !!}
-                </div>
-            </div>
-            <div class="col-sm-10">
-                @if($companys->favicon != null)
-                <div class="col-md-3 favicon-image" data-content="Haga clic aquí para eliminar">
-                    <img src="{{asset('lb-faveo/media/company')}}/{{ $companys->favicon }}" alt="Favicon" width="32px" height="32px" style="border:1px solid #DCD1D1; cursor:pointer;" id="company-favicon" />
+                @if($companys->logo != null)
+                <div class="mt-2 position-relative d-inline-block image" style="max-width:320px;">
+                    <img src="{{asset('lb-faveo/media/company')}}/{{ $companys->logo }}" alt="User Image" id="company-logo" width="100%" class="img-thumbnail shadow-sm" style="border:1px solid #DCD1D1; background:#fff; max-width:320px;" />
+                    <span class="badge badge-danger position-absolute" style="top:8px; right:8px; cursor:pointer; z-index:10; font-size:1.2em;">&times;</span>
                 </div>
                 @endif
+            </div>
+            <div class="col-md-6 d-flex flex-column align-items-center">
+                <!-- Favicon -->
+                <label class="font-weight-bold mb-2" for="favicon">{!! Lang::get('lang.favicon') !!}</label>
+                <div class="custom-file mb-2 w-100" style="max-width:180px;">
+                    {!! Form::file('favicon', ['class' => 'custom-file-input', 'id' => 'favicon']) !!}
+                    <label class="custom-file-label" for="favicon">{{ Lang::get('lang.upload_favicon') }}</label>
+                </div>
+                @if($companys->favicon != null)
+                <div class="mt-2 position-relative d-inline-block favicon-image" style="max-width:40px;">
+                    <img src="{{asset('lb-faveo/media/company')}}/{{ $companys->favicon }}" alt="Favicon" id="company-favicon" width="32" height="32" class="img-thumbnail shadow-sm" style="border:1px solid #DCD1D1; background:#fff;" />
+                    <span class="badge badge-danger position-absolute" style="top:2px; right:2px; cursor:pointer; z-index:10; font-size:0.9em; padding:2px 5px; line-height:1;">&times;</span>
+                </div>
+                @endif
+            </div>
+            <div class="w-100"></div>
+            <div class="col-12 d-flex justify-content-center mt-3">
+                <div class="form-check">
+                    {!! Form::checkbox('use_logo', 1, $companys->use_logo == 1, ['class' => 'form-check-input', 'id' => 'use_logo']) !!}
+                    <label class="form-check-label" for="use_logo">{!! Lang::get('lang.use_logo') !!} - {!! Lang::get('lang.use_favicon') !!}</label>
+                </div>
             </div>
         </div>
     </div>
@@ -168,8 +165,44 @@ class="nav-link active"
 </div>
 <script type="text/javascript">
     $(document).ready(function() {
+        // Previsualización de logo
+        $('#logo').on('change', function(e) {
+            var input = this;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var img = $('#company-logo');
+                    if (img.length === 0) {
+                        var preview = $('<div class="mt-2 position-relative d-inline-block image" data-content="'+"{{Lang::get('lang.click-delete')}}"+'"><img id="company-logo" width="100" class="img-thumbnail shadow-sm" style="border:1px solid #DCD1D1; background:#fff;" /><span class="badge badge-danger position-absolute" style="top:0; right:0; cursor:pointer;">&times;</span></div>');
+                        $(input).closest('.col-md-3').append(preview);
+                        img = $('#company-logo');
+                    }
+                    img.attr('src', e.target.result);
+                    img.parent().show();
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        });
+        // Previsualización de favicon
+        $('#favicon').on('change', function(e) {
+            var input = this;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var img = $('#company-favicon');
+                    if (img.length === 0) {
+                        var preview = $('<div class="mt-2 position-relative d-inline-block favicon-image" data-content="'+"{{ Lang::get('lang.click-delete-favicon') }}"+'"><img id="company-favicon" width="32" height="32" class="img-thumbnail shadow-sm" style="border:1px solid #DCD1D1; background:#fff;" /><span class="badge badge-danger position-absolute" style="top:0; right:0; cursor:pointer;">&times;</span></div>');
+                        $(input).closest('.col-md-3').append(preview);
+                        img = $('#company-favicon');
+                    }
+                    img.attr('src', e.target.result);
+                    img.parent().show();
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        });
         // Logo delete
-        $(".image").on("click", function() {
+        $(document).on("click", ".image .badge", function() {
             $('#myModal').modal('show');
             $("#myModalLabel").html("{!! Lang::get('lang.delete-logo') !!}");
             $(".yes").html("{!! Lang::get('lang.yes') !!}");
@@ -178,12 +211,12 @@ class="nav-link active"
             $("#myModal").data('delete-type', 'logo');
         });
         // Favicon delete
-        $(".favicon-image").on("click", function() {
+        $(document).on("click", ".favicon-image .badge", function() {
             $('#myModal').modal('show');
-            $("#myModalLabel").html("Eliminar favicon");
-            $(".yes").html("Sí");
-            $(".no").html("Cancelar");
-            $("#custom-alert-body").html("¿Estás seguro de que deseas eliminar el favicon?");
+            $("#myModalLabel").html("{!! Lang::get('lang.delete-favicon') !!}");
+            $(".yes").html("{!! Lang::get('lang.yes') !!}");
+            $(".no").html("{{Lang::get('lang.cancel')}}");
+            $("#custom-alert-body").html("{{Lang::get('lang.confirm')}}");
             $("#myModal").data('delete-type', 'favicon');
         });
         $('.no,.closemodal').on("click", function() {
@@ -209,9 +242,11 @@ class="nav-link active"
                 success: function(data) {
                     if (data == "true") {
                         if(deleteType === 'logo') {
-                            $("#logo-display").css("display", "none");
+                            $('.image').hide();
+                            $('#logo').val('');
                         } else if(deleteType === 'favicon') {
-                            $(".favicon-image").css("display", "none");
+                            $('.favicon-image').hide();
+                            $('#favicon').val('');
                         }
                         $('#myModal').modal('hide');
                     } else {
