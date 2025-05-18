@@ -22,7 +22,7 @@ active
 
 @section('content')
 
-        <a class="twitter-share-button" target="_blank" href="https://twitter.com/intent/tweet?text=I just set up a new HELPDESK with @faveohelpdesk www.faveohelpdesk.com">
+        <a class="twitter-share-button" target="_blank" href="https://x.com/UTELVT_2017">
             <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ-uhinU3OzXKj9zlFO7dFxHaChqyHPcWWg5nWgMqYt6N5b3knK" style="width: 86px; float: right;">
         </a>
 
@@ -56,12 +56,12 @@ active
             <div class="setup-next-steps-last">
                 <h2>{!! Lang::get('lang.learn_more') !!}</h2>
                 <ul>
-                    <li class="video-walkthrough"><a target="_blank" href="https://www.youtube.com/channel/UC-eqh-h241b1janp6sU7Iiw">{!! Lang::get('lang.video_walk_through') !!}</a>
+                    <li class="video-walkthrough"><a target="_blank" href="https://www.youtube.com/@UTLVTE">{!! Lang::get('lang.video_walk_through') !!}</a>
                     </li>
-                    <li class="sidekick"><a target="_blank" href="https://www.support.faveohelpdesk.com/knowledgebase">{!! Lang::get('lang.knowledge_base') !!}</a>
+                    <li class="sidekick"><a target="_blank" href="https://www.utelvt.edu.ec/site/facultades/facultad-de-ingenierias/tecnologias-de-la-informacion">{!! Lang::get('lang.knowledge_base') !!}</a>
                     </li>
 
-                    <li class="newsletter"><a href="mailto:support@ladybirdweb.com">{!! Lang::get('lang.email_support') !!}</a>
+                    <li class="newsletter"><a href="mailto:informatica@utelvt.edu.ec">{!! Lang::get('lang.email_support') !!}</a>
                     </li>
                     <br>
                     <br>

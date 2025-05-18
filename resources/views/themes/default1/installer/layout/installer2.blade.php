@@ -3,7 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Faveo HELPDESK</title>
+        <title>{!! Config::get('app.name') !!}</title>
         <link rel="shortcut icon" href="{{asset("lb-faveo/media/images/favicon.ico")}}">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" href="{{asset("lb-faveo/css/load-styles.css")}}" type="text/css" media="all">
@@ -18,8 +18,8 @@
         <link rel="stylesheet" href="{{asset("lb-faveo/css/chosen.css")}}">
     </head>
     <body class="wc-setup wp-core-ui">
-        <center><h1 id="wc-logo"><a href="http://www.faveohelpdesk.com">
-            <img src="{{asset("lb-faveo/media/installer/faveo.png")}}" alt="faveo" width="
+        <center><h1 id="wc-logo"><a href="https://www.utelvt.edu.ec/site/">
+            <img src="{{asset("lb-faveo/media/installer/8704.logoutlvte.png")}}" alt="faveo" width="
             250px"></a></h1></center>
    
     <div class="wc-setup-content">
@@ -27,7 +27,7 @@
     </div>
     
     
-    <p style="text-align: center;"> Copyright &copy; 2015 - <?php echo date('Y')?> · Ladybird Web Solution Pvt Ltd. All Rights Reserved. Powered by <a target="_blank" href="http://www.faveohelpdesk.com">Faveo </a></p>
+    <p style="text-align: center;"> Copyright &copy; 2015 - <?php echo date('Y')?> · University Student. All Rights Reserved. Powered by <a class="text-red" target="_blank" href="https://laravel.com">Laravel</a></p>
     
 
 

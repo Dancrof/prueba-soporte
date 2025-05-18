@@ -3,7 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Faveo HELPDESK</title>
+        <title>{!! Config::get('app.name') !!}</title>
         <link href="{{asset("lb-faveo/media/images/favicon.ico")}}"  rel="shortcut icon" />
         <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery.ui.css" rel="stylesheet" />
         <link href="{{asset("lb-faveo/css/load-styles.css")}}" rel="stylesheet" type="text/css" />
@@ -18,8 +18,8 @@
         <link href="{{asset("lb-faveo/css/chosen.css")}}" rel="stylesheet" type="text/css" />
     </head>
     <body class="setup wp-core-ui">
-        <center><a href="http://www.faveohelpdesk.com">
-            <img src="{{asset("lb-faveo/media/installer/faveo.png")}}" alt="faveo" width="250px"></a></center>
+        <center><a href="https://www.utelvt.edu.ec/site/">
+            <img src="{{asset("lb-faveo/media/installer/8704.logoutlvte.png")}}" alt="faveo" width="250px"></a></center>
     <ol class="setup-steps">
         <li class="@yield('environment')">Environment Test</li>
         <li class="@yield('license')">License Agreement</li>
@@ -30,7 +30,7 @@
     <div class="setup-content">
         @yield('content')
     </div>
-    <p style="text-align: center;"> Copyright &copy; 2015 - <?php echo date('Y')?> · Ladybird Web Solution Pvt Ltd. All Rights Reserved. Powered by <a target="_blank" href="http://www.faveohelpdesk.com">Faveo </a></p>
+    <p style="text-align: center;"> Copyright &copy; 2015 - <?php echo date('Y')?> · University Student. All Rights Reserved. Powered by <a class="text-red" target="_blank" href="https://laravel.com">Laravel</a></p>
 
     <script src="{{asset("lb-faveo/js/ggpopover.js")}}" type="text/javascript"></script>
 
