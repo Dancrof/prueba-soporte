@@ -86,9 +86,9 @@ class DatabaseSeeder extends Seeder
         foreach ($date_time_formats as $date_time_format) {
             Date_time_format::create(['format' => $date_time_format]);
         }
-        NotificationType::create(['id' => '1', 'message' => 'A new user is registered', 'type' => 'registration', 'icon_class' => 'fa fa-user']);
-        NotificationType::create(['id' => '2', 'message' => 'You have a new reply on this ticket', 'type' => 'reply', 'icon_class' => 'fa fa-envelope']);
-        NotificationType::create(['id' => '3', 'message' => 'A new ticket has been created', 'type' => 'new_ticket', 'icon_class' => 'fa fa-envelope']);
+        NotificationType::create(['id' => '1', 'message' => 'Un nuevo usuario está registrado', 'type' => 'registration', 'icon_class' => 'fa fa-user']);
+        NotificationType::create(['id' => '2', 'message' => 'Tienes un nuevo mensaje en este ticket', 'type' => 'reply', 'icon_class' => 'fa fa-envelope']);
+        NotificationType::create(['id' => '3', 'message' => 'Un nuevo ticket ha sido creado', 'type' => 'new_ticket', 'icon_class' => 'fa fa-envelope']);
         WorkflowClose::create(['id' => '1', 'days' => '2', 'condition' => '1', 'send_email' => '1', 'status' => '3']);
 
         /* Date format */

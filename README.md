@@ -235,3 +235,77 @@ docker-compose exec app php artisan [comando]
 # Regenerar certificados SSL
 ./docker/nginx/ssl/generate-ssl.sh
 ```
+
+Configuración de Email con MailHog
+--------------------------
+Si los puertos SMTP están bloqueados en tu entorno de desarrollo, puedes usar MailHog para pruebas de envío de emails. MailHog es una herramienta de desarrollo que captura los emails enviados por tu aplicación y los muestra en una interfaz web.
+
+### Instalación de MailHog
+
+1. Agregar MailHog al archivo docker-compose.yml:
+```yaml
+mailhog:
+  image: mailhog/mailhog
+  ports:
+    - "1025:1025" # Servidor SMTP
+    - "8025:8025" # Interfaz web
+```
+
+2. Configurar el archivo .env para usar MailHog:
+```
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=from@example.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+3. Reiniciar los contenedores:
+```bash
+docker-compose down
+docker-compose up -d
+```
+
+### Uso de MailHog
+
+1. Accede a la interfaz web de MailHog en: `http://localhost:8025`
+2. Todos los correos electrónicos enviados por tu aplicación serán capturados y mostrados en esta interfaz
+3. Puedes ver el contenido de los correos, incluyendo:
+   - Destinatarios
+   - Asunto
+   - Contenido HTML y texto plano
+   - Archivos adjuntos
+   - Cabeceras del correo
+
+### Ventajas de usar MailHog
+
+- No necesitas configurar un servidor SMTP real
+- Los correos no se envían realmente, evitando envíos accidentales
+- Interfaz web intuitiva para revisar los correos
+- Ideal para desarrollo y pruebas
+- No requiere configuración de credenciales SMTP
+
+### Notas importantes
+
+- MailHog es solo para desarrollo y pruebas
+- No uses esta configuración en producción
+- Los correos capturados se pierden al reiniciar el contenedor
+- Asegúrate de que los puertos 1025 y 8025 estén disponibles
+
+### Solución de problemas comunes
+
+1. Si no puedes acceder a la interfaz web:
+   - Verifica que el contenedor de MailHog esté corriendo: `docker-compose ps`
+   - Comprueba los logs: `docker-compose logs mailhog`
+   - Asegúrate de que los puertos no estén siendo usados por otra aplicación
+
+2. Si los correos no aparecen en MailHog:
+   - Verifica la configuración en el archivo .env
+   - Comprueba que la aplicación esté usando el host y puerto correctos
+   - Revisa los logs de la aplicación para errores de envío
+
+3. Para limpiar todos los correos capturados:
+   - Reinicia el contenedor de MailHog: `docker-compose restart mailhog`
