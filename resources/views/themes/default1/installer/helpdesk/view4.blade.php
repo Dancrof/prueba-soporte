@@ -136,7 +136,7 @@ try {
     <?php if ($mysqli_ok) { ?>
 
         <div class="woocommerce-message woocommerce-tracker" >
-            <p id="pass">Database connection successful. This system can run Faveo</p>
+            <p id="pass">Database connection successful. This system can run {!! Config::get('app.name') !!}</p>
         </div>
 
         <script src="{{asset("lb-faveo/js/ajax-jquery.min.js")}}"></script>
@@ -319,7 +319,7 @@ try {
         <p class="setup-actions step">
             <span class="ok">Ok</span> &mdash; All Ok <br/>
             <span class="warning">Warning</span> &mdash; Not a deal breaker, but it's recommended to have this installed for some features to work<br/>
-            <span class="error">Error</span> &mdash; Faveo HELPDESK require this feature and can't work without it<br/>
+            <span class="error">Error</span> &mdash; {!! Config::get('app.name') !!} require this feature and can't work without it<br/>
         </p>
         {{-- </ul> --}}
     </div>

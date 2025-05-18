@@ -673,9 +673,9 @@
                 $company = App\Model\helpdesk\Settings\Company::where('id', '=', '1')->first();
                 ?>
                 @if(isset($company))
-                    <span style="font-weight: 500">{!! Lang::get('lang.copyright') !!} &copy; {!! date('Y') !!}  <a href="{!! $company->website !!}" target="_blank" class="text-green">{!! $company->company_name !!}</a>.</span> {!! Lang::get('lang.all_rights_reserved') !!}. {!! Lang::get('lang.powered_by') !!} <a href="https://laravel.com/" target="_blank" class="text-red">{{ env('POWERED_BY') }}</a>
+                    <span style="font-weight: 500">{!! Lang::get('lang.copyright') !!} &copy; {!! date('Y') !!}  <a href="{!! $company->website !!}" target="_blank" class="text-green">{!! $company->company_name !!}</a>.</span> {!! Lang::get('lang.all_rights_reserved') !!}. {!! Lang::get('lang.powered_by') !!} <a href="https://laravel.com/" target="_blank" class="text-red">Laravel</a>
                 @else
-                    <span style="font-weight: 500">{!! Lang::get('lang.copyright') !!} &copy; {!! date('Y') !!}  <a href="https://laravel.com/" target="_blank" class="text-green">Laravel</a></span> {!! Lang::get('lang.all_rights_reserved') !!}. {!! Lang::get('lang.powered_by') !!} <a href="https://laravel.com/" target="_blank" class="text-red">{{ env('POWERED_BY') }}</a>
+                    <span style="font-weight: 500">{!! Lang::get('lang.copyright') !!} &copy; {!! date('Y') !!}  <a href="https://laravel.com/" target="_blank" class="text-green">Laravel</a></span> {!! Lang::get('lang.all_rights_reserved') !!}. {!! Lang::get('lang.powered_by') !!} <a href="https://laravel.com/" target="_blank" class="text-red">Laravel</a>
                 @endif
                 
             </footer>

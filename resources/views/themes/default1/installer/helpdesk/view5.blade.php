@@ -60,7 +60,7 @@ active
 
     <div ng-controller="MainController">
             <table>                
-                <p>Welcome to the five-minute Faveo installation process! Just fill in the information below.</p>
+                <p>Welcome to the five-minute {!! Config::get('app.name') !!} installation process! Just fill in the information below.</p>
                 <h1 style="border-top:1px solid #dedede; border-bottom:1px solid #dedede; padding: 10px 0px 10px 0px;">Personal Information</h1>
                 <p>Please provide the following information. Don’t worry, you can always change these settings later.</p>
                 <div>

@@ -23,7 +23,7 @@ active
          @endif
 <?php
 define('PROBE_VERSION', '1.0');
-define('PROBE_FOR', 'Faveo HELPDESK '. Config::get('app.version').' and Newer');
+define('PROBE_FOR', Config::get('app.name').' '. Config::get('app.version').' and Newer');
 define('STATUS_OK', 'Ok');
 define('STATUS_WARNING', 'Warning');
 define('STATUS_ERROR', 'Error');
@@ -48,10 +48,10 @@ class TestResult {
         <?php echo PROBE_FOR?>
         <br/>
         <br/>
-    This test will check prerequisites required to install Faveo
+    This test will check prerequisites required to install {!! Config::get('app.name') !!}
     
     <br/><br/>
-    <p>NOTE:&nbsp;FAVEO doesn't work properly without JavaScript.  In order to install and run FAVEO to its full extent please make sure JavaScript is enabled in your browser.</p>
+    <p>NOTE:&nbsp;{!! Config::get('app.name') !!} doesn't work properly without JavaScript.  In order to install and run {!! Config::get('app.name') !!} to its full extent please make sure JavaScript is enabled in your browser.</p>
      <?php
 
 function validate_php(&$results) {
@@ -290,7 +290,7 @@ if ($php_ok && $memory_ok && $extensions_ok && $file_permission && $required_fun
 </div>  
 
             <div class="woocommerce-message woocommerce-tracker" >
-                <p id="pass">OK, this system can run Faveo</p>
+                <p id="pass">OK, this system can run {!! Config::get('app.name') !!}</p>
             </div>
 
 
@@ -308,7 +308,7 @@ if ($php_ok && $memory_ok && $extensions_ok && $file_permission && $required_fun
     ?></div><br>
             
             <div class="woocommerce-message woocommerce-tracker" >
-                <p id="fail">This system does not meet Faveo system requirements</p>
+                <p id="fail">This system does not meet {!! Config::get('app.name') !!} system requirements</p>
             </div>
 <p class="setup-actions step">
     <a href="{{URL::route('licence')}}" style="float: left"><button value="prev" class="button-primary button button-large">Previous</button></a>
@@ -321,7 +321,7 @@ if ($php_ok && $memory_ok && $extensions_ok && $file_permission && $required_fun
         {{-- <ul> --}}
           <p><span class="ok">Ok</span> &mdash; All Ok<br/>
           <span class="warning">Warning</span> &mdash; Not a deal breaker, but it's recommended to have this installed for some features to work<br/>
-          <span class="error">Error</span> &mdash; Faveo HELPDESK require this feature and can't work without it</p>
+          <span class="error">Error</span> &mdash; {!! Config::get('app.name') !!} require this feature and can't work without it</p>
         {{-- </ul> --}}
       </div>
 </div>
