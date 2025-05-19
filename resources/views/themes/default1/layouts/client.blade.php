@@ -227,7 +227,7 @@ $footer4 = App\Model\helpdesk\Theme\Footer4::whereId('1')->first();
 					<hr/>
                     <div class="row">
 						<div class="site-info col-md-6">
-                            <p class="text-muted">Copyright &copy; {!! date('Y') !!}  <a class="text-green" href="{!! $company->website !!}">{!! $company->company_name !!}</a>. All rights reserved. Powered by <a href="http://www.faveohelpdesk.com/">Laravel</a></p>
+                            <span style="font-weight: 500">Copyright &copy; {!! date('Y') !!}  <a style="color: #00ba3e" href="{!! $company->website !!}">{!! $company->company_name !!}</a>. All rights reserved. Powered by <a style="color: #ba0016" href="https://laravel.com">Laravel</a></span>
                         </div>
 					</div>
 		</footer><!-- #colophon -->

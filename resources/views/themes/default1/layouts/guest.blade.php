@@ -374,7 +374,7 @@
         <div class="pull-right hidden-xs">
           <b>{!! Lang::get('lang.version') !!}</b> 2.0
         </div>
-        <strong>Copyright &copy; 2014-{!! date('Y') !!} <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+        <strong style="font-weight: 500">Copyright &copy; 2014-{!! date('Y') !!} <a style="color: #00ba3e" href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
       </footer>
     </div><!-- ./wrapper -->
 

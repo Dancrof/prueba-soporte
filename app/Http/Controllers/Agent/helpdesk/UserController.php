@@ -1100,7 +1100,7 @@ class UserController extends Controller
     {
         $users = User::where('role', '<>', 'user')->where('active', '=', 1)->orderBy('first_name')->get();
         foreach ($users as $user) {
-            echo "<option value='user_$user->id'>".$user->name().'</option>';
+            echo "<option value='user_$user->id'>".$user->name().' - '.$user->email.'</option>';
         }
     }
 }

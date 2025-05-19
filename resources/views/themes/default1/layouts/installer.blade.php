@@ -110,7 +110,7 @@ a:active  {color:#000;}
 <body style="background-color:#d2d6de;">
 <div class="login-box">
     @yield('content')
-    <p id="footer">&copy;<?php echo date('Y')?>. Powered by <a href="http://www.faveohelpdesk.com">Faveo </a></p>
+    <span style="font-weight: 500" id="footer">&copy;<?php echo date('Y')?>. Powered by <a style="color: #ba0016" href="https://laravel.com"> Laravel </a></span>
 </div>
 </body>
 </html>

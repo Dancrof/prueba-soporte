@@ -121,7 +121,7 @@
                                 <div class="pull-right hidden-xs">
                                     <b>{!! Lang::get('lang.version') !!}</b> 0.1
                                 </div>
-                           <strong>Copyright &copy; {!! date('Y') !!}  <a href="{!! $company->website !!}">{!! $company->company_name !!}</a>.</strong> All rights reserved. Powered by <a href="http://www.faveohelpdesk.com/">Faveo</a>
+                           <strong style="font-weight: 500">Copyright &copy; {!! date('Y') !!}  <a style="color: #00ba3e" href="{!! $company->website !!}">{!! $company->company_name !!}</a>.</strong> All rights reserved. Powered by <a style="color: #ba0016" href="https://laravel.com">Laravel</a>
                             </footer>
                     </div><!-- ./wrapper -->
 

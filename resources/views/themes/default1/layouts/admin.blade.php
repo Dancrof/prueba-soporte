@@ -260,7 +260,7 @@
                                 <?php
                                 $company = App\Model\helpdesk\Settings\Company::where('id','=','1')->first();
                                 ?>
-                                <strong>Copyright &copy; {!! date('Y') !!}  <a href="{!! $company->website !!}">{!! $company->company_name !!}</a>.</strong> All rights reserved. Powered by <a href="http://www.faveohelpdesk.com/" target="blank">Faveo</a>
+                                <strong style="font-weight: 500">Copyright &copy; {!! date('Y') !!}  <a style="color: #00ba3e" href="{!! $company->website !!}">{!! $company->company_name !!}</a>.</strong> All rights reserved. Powered by <a style="color: #ba0016" href="https://laravel.com" target="blank">Laravel</a>
                             </footer>
                     </div><!-- ./wrapper -->
 
