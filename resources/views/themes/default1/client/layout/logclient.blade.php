@@ -43,6 +43,83 @@
 <body>
 
 <style>
+    :root {
+        --main-color: {{ $company->header_bg_color ?? '#009fe3' }};
+    }
+    /* Título del sistema */
+    #logo, #logo a, #logo b, .site-logo, .site-logo b {
+        color: var(--main-color) !important;
+        fill: var(--main-color) !important;
+    }
+    /* Letras principales y enlaces activos */
+    .navbar-nav > .active > a,
+    .navbar-nav > li > a:hover,
+    .navbar-nav > li > a:focus,
+    .btn-custom,
+    .btn-primary,
+    .site-navigation .active > a {
+        color: var(--main-color) !important;
+        border-color: var(--main-color) !important;
+    }
+    /* Cuadro azul debajo del header */
+    .site-search,
+    #header-search {
+        background: var(--main-color) !important;
+    }
+    /* Botón buscar */
+    .search-form .btn,
+    .search-form .btn-custom,
+    .search-form .btn-primary,
+    .search-form button[type="submit"] {
+        background: var(--main-color) !important;
+        border-color: var(--main-color) !important;
+        color: #fff !important;
+    }
+    /* Cuadro azul debajo del header y site-hero */
+    .site-hero {
+        background: var(--main-color) !important;
+    }
+    /* Botón cerrar sesión y tablero */
+    a[href*="logout"],
+    a[href*="dashboard"],
+    a[href*="register"],
+    .btn-logout,
+    .btn-dashboard,
+    .btn-primary.btn-block {
+        background: var(--main-color) !important;
+        border-color: var(--main-color) !important;
+        color: #fff !important;
+    }
+    /* Letras principales de navegación */
+    .navbar-nav > li > a[href*="form"],
+    .navbar-nav > li > a[href*="mytickets"],
+    .navbar-nav > li > a[href*="knowledgebase"] {
+        color: var(--main-color) !important;
+        border-color: var(--main-color) !important;
+    }
+    /* Solo color dinámico en el texto de los widgets principales */
+    .widgetitemtitle,
+    a.widgetrowitem .widgetitemtitle,
+    .widgetrowitem .widgetitemtitle {
+        color: var(--main-color) !important;
+        background: none !important;
+    }
+    /* Color solo en hover/focus */
+    .navbar-nav > .nav-item > .nav-link:hover,
+    .navbar-nav > .nav-item > .nav-link:focus {
+        color: var(--main-color) !important;
+        border-color: var(--main-color) !important;
+    }
+    /* Color solo para la opción activa real */
+    .navbar-nav > .nav-item.active > .nav-link {
+        color: var(--main-color) !important;
+        border-color: var(--main-color) !important;
+    }
+    /* Revertir color en los demás */
+    .navbar-nav > .nav-item > .nav-link {
+        color: inherit !important;
+        border-color: inherit !important;
+    }
 
     #dropdown_content{ padding-top: 1rem;margin: 0 !important;}
 
@@ -85,6 +162,30 @@
     .nav-item .dropdown-menu{right: unset !important; left: unset!important;margin-left: -6px;}
 
     .btn-primary { background-color:#009aba !important;border-color:#00c0ef !important; }
+
+    /* Botón registro */
+    a[href*="register"],
+    .btn.btn-primary,
+    .btn.btn-block,
+    .btn.btn-primary.btn-block,
+    button[type="submit"].btn-primary,
+    button[type="submit"].btn-block {
+        background: var(--main-color) !important;
+        border-color: var(--main-color) !important;
+        color: #fff !important;
+    }
+    /* Fondo blanco para los widgets, solo el texto cambia de color */
+    a.widgetrowitem,
+    .widgetrowitem {
+        background-color: #fff !important;
+    }
+    /* Color dinámico también para los íconos dentro de los widgets */
+    .widgetrowitem i,
+    .widgetrowitem svg,
+    .widgetrowitem .fa {
+        color: var(--main-color) !important;
+        fill: var(--main-color) !important;
+    }
 </style>
 
 <div id="page" class="hfeed site text-small">

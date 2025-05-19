@@ -55,6 +55,88 @@
             .note-editor .note-dropdown-menu, .note-editor .note-modal-footer {
                 box-sizing: content-box;
             }
+
+            /* Colores personalizados desde configuración */
+            :root {
+                --main-color: {{ $company->header_bg_color ?? '#009fe3' }};
+            }
+            /* Título del sistema */
+            #logo, #logo a, #logo b, .site-logo, .site-logo b {
+                color: var(--main-color) !important;
+                fill: var(--main-color) !important;
+            }
+            /* Letras principales y enlaces activos */
+            .navbar-nav > .active > a,
+            .navbar-nav > li > a:hover,
+            .navbar-nav > li > a:focus,
+            .btn-custom,
+            .btn-primary,
+            .site-navigation .active > a {
+                color: var(--main-color) !important;
+                border-color: var(--main-color) !important;
+            }
+            /* Cuadro azul debajo del header */
+            .site-search,
+            #header-search {
+                background: var(--main-color) !important;
+            }
+            /* Botón buscar */
+            .search-form .btn,
+            .search-form .btn-custom,
+            .search-form .btn-primary,
+            .search-form button[type="submit"] {
+                background: var(--main-color) !important;
+                border-color: var(--main-color) !important;
+                color: #fff !important;
+            }
+            /* Cuadro azul debajo del header y site-hero */
+            .site-hero {
+                background: var(--main-color) !important;
+            }
+            /* Botón cerrar sesión y tablero */
+            a[href*="logout"],
+            a[href*="dashboard"],
+            .btn-logout,
+            .btn-dashboard {
+                background: var(--main-color) !important;
+                border-color: var(--main-color) !important;
+                color: #fff !important;
+            }
+            /* Letras principales de navegación */
+            .navbar-nav > li > a[href*="form"],
+            .navbar-nav > li > a[href*="mytickets"],
+            .navbar-nav > li > a[href*="knowledgebase"] {
+                color: var(--main-color) !important;
+                border-color: var(--main-color) !important;
+            }
+            /* Color dinámico para los textos de los widgets principales */
+            .widgetitemtitle,
+            a.widgetrowitem .widgetitemtitle,
+            .widgetrowitem .widgetitemtitle {
+                color: var(--main-color) !important;
+            }
+            /* Color solo en hover/focus */
+            .navbar-nav > .nav-item > .nav-link:hover,
+            .navbar-nav > .nav-item > .nav-link:focus {
+                color: var(--main-color) !important;
+                border-color: var(--main-color) !important;
+            }
+            /* Color solo para la opción activa real */
+            .navbar-nav > .nav-item.active > .nav-link {
+                color: var(--main-color) !important;
+                border-color: var(--main-color) !important;
+            }
+            /* Revertir color en los demás */
+            .navbar-nav > .nav-item > .nav-link {
+                color: inherit !important;
+                border-color: inherit !important;
+            }
+            /* Botón iniciar sesión y otros .btn-custom */
+            .btn.btn-custom {
+                background: var(--main-color) !important;
+                border-color: var(--main-color) !important;
+                color: #fff !important;
+            }
         </style>
     </head>
     <body>

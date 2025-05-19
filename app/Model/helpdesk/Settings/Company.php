@@ -10,6 +10,7 @@ class Company extends BaseModel
 
     protected $fillable = [
         'company_name', 'website', 'phone', 'address', 'landing_page', 'offline_page',
-        'thank_page', 'logo', 'use_logo',
+        'thank_page', 'logo', 'use_logo', 'favicon',
+        'header_bg_color', 'menu_bg_color', 'button_bg_color', 'footer_bg_color',
     ];
 }

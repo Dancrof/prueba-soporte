@@ -110,6 +110,14 @@
                 opacity: 0.65;
                 pointer-events: none;
             }
+
+            /* Colores personalizados desde configuración */
+            :root {
+                --header-bg-color: {{ $company->header_bg_color ?? '#009fe3' }};
+            }
+            header.site-header, #masthead, .main-header, .navbar, .navbar-light, .navbar-expand, .main-header.navbar {
+                background: var(--header-bg-color) !important;
+            }
         </style>
     </head>
     

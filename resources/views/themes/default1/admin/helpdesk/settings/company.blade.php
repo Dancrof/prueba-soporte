@@ -104,6 +104,33 @@ class="nav-link active"
             {!! Form::textarea('address',$companys->address,['class' => 'form-control','size' => '30x5']) !!}
         </div>
 
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('header_bg_color', 'Color de fondo del Header') !!}
+                    {!! Form::color('header_bg_color', $companys->header_bg_color ?? '#009fe3', ['class' => 'form-control']) !!}
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('menu_bg_color', 'Color de fondo del Menú') !!}
+                    {!! Form::color('menu_bg_color', $companys->menu_bg_color ?? '#009fe3', ['class' => 'form-control']) !!}
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('button_bg_color', 'Color de fondo de los Botones') !!}
+                    {!! Form::color('button_bg_color', $companys->button_bg_color ?? '#009fe3', ['class' => 'form-control']) !!}
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('footer_bg_color', 'Color de fondo del Footer') !!}
+                    {!! Form::color('footer_bg_color', $companys->footer_bg_color ?? '#009fe3', ['class' => 'form-control']) !!}
+                </div>
+            </div>
+        </div>
+
         <div class="row align-items-start mb-4" style="gap: 0;">
             <div class="col-md-6 d-flex flex-column align-items-center">
                 <!-- logo -->
