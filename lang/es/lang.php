@@ -1371,6 +1371,7 @@ Puede ingresar el número de días de registros de base de datos que se eliminar
     'log_out'                                                                          => 'Cerrar sesión',
     'forgot_password'                                                                  => 'Se te olvidó tu contraseña',
     'create_account'                                                                   => 'Crear una cuenta',
+    'already_got_an_account?'                                                          => '¿Ya tienes una cuenta?',
     'you_are_here'                                                                     => 'Estás aquí',
     'have_a_ticket'                                                                    => 'Tengo un ticket',
     'check_ticket_status'                                                              => 'Compruebe el estado del ticket',
