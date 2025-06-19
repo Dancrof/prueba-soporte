@@ -161,8 +161,8 @@ class="nav-item active"
                                 <div class="form-group" style="padding-bottom: 10px;">
 
 
-                                    <button type="submit" class="btn btn-primary float-right" style="background-color: #337ab7 !important; border-color: #337ab7 !important; color: white;">
-                                        <i class="fas fa-sync"></i> {{ Lang::get('lang.update') }}
+                                    <button type="submit" class="btn btn-primary float-right" style="background-color: {{ $companys->button_bg_color ?? '#009fe3' }} !important; border-color: {{ $companys->button_bg_color ?? '#009fe3' }} !important; color: white !important;">
+                                        <i class="fas fa-sync" style="color: white !important;"></i> <span style="color: white !important;">{{ Lang::get('lang.update') }}</span>
                                     </button>                                </div>
                             </div>
                         </section>
@@ -204,10 +204,15 @@ class="nav-item active"
                                 {!! Form::close() !!}
 
                                 <div class="form-group" style="padding-bottom: 10px;">
-
-                                    <button type="submit" class="btn btn-primary float-right" style="background-color: #337ab7 !important; border-color: #337ab7 !important; color: white;">
-                                        <i class="fas fa-sync"></i> {{ Lang::get('lang.update') }}
-                                    </button>
+                                    
+                                    <?php 
+                                        $button_bg_color = $companys->button_bg_color ?? '#009fe3';
+                                    ?>
+                                    @if($button_bg_color)
+                                        <button type="submit" class="btn btn-primary float-right" style="background-color: {{ $button_bg_color }} !important; border-color: {{ $button_bg_color }} !important; color: white !important;">
+                                            <i class="fas fa-sync" style="color: white !important;"></i> <span style="color: white !important;">{{ Lang::get('lang.update') }}</span>
+                                        </button>
+                                    @endif
                                 </div>
                             </div>
                         </section>
